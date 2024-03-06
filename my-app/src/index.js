@@ -2,23 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-function Square(props) {
-  return (
-    <button className="square" onClick={props.onClick}>
-      {props.value}
-    </button>
-  );
-}
-  
-class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      squares: Array(9).fill(null),
-      xIsNext: true,
-    };
+class Square extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+          value:null
+      };
+    }
+
+    render() {
+      return (
+        < button className = " square "
+          onClick ={()=> this.setState({value: 'X'})} >
+          {this.props.value}
+        </button>
+      );
+    }
   }
-<<<<<<< HEAD
   
   class Board extends React.Component {
     constructor(props) {
@@ -38,8 +38,7 @@ class Board extends React.Component {
       return (<Square 
               value={this.state.squares[i]}
               onClick={() => this.handleClick(i)}
-              />
-            );
+              />);
     }
     
     render() {
@@ -63,52 +62,10 @@ class Board extends React.Component {
             {this.renderSquare(7)}
             {this.renderSquare(8)}
           </div>
-=======
-
-  handleClick(i) {
-    const squares = this.state.squares.slice();
-    squares[i] = this.state.xIsNext ? 'X' : 'O';
-    this.setState({
-      squares: squares,
-      xIsNext: !this.state.xIsNext,
-    });
-  }
-
-  renderSquare(i) {
-    return (
-      <Square
-        value={this.state.squares[i]}
-        onClick={() => this.handleClick(i)}
-      />
-    );
-  }
-
-  render() {
-    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-
-    return (
-      <div>
-        <div className="status">{status}</div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
->>>>>>> 21d65d5e5bfcf1dd9981adbc193fe277353412a7
         </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </div>
-    );
+      );
+    }
   }
-}
   
   class Game extends React.Component {
     render() {
