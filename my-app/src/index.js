@@ -30,6 +30,7 @@ class Board extends React.Component {
         onClick={() => this.props.onClick(i)}
       />
     );
+    
   }
 
   render() {
